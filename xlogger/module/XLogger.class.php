@@ -82,7 +82,6 @@ class XLogger
 			'dataBase'		=>'',
 			'dataTable'		=>'',
 		);
-		
 		if ( @$class=$this->configArr[$this->m]['rule']['class'] ){
 			$obj=new $class();
 			$key=$this->configArr[$this->m]['rule']['key'];
@@ -97,6 +96,9 @@ class XLogger
 	
 	//获取存储连接地址
 	public function getSource($data){
+		if( isset($this->configArr[$this->m]['enable']) &&  !$this->configArr[$this->m]['enable']){
+			return false;
+		}
 		$data['addTime']=isset($data['addTime'])?$data['addTime']:date('Y-m-d H:i:s');
 		$dataSrouce = $this->_getDataSoure($data);
 		if( $this->configArr[$this->m]['db']=='file' ){
@@ -113,7 +115,7 @@ class XLogger
 			return false;
 		}
 		$data['addTime']=isset($data['addTime'])?$data['addTime']:date('Y-m-d H:i:s');
-		$module=$this->m;	
+		$module=$this->m;
 		if( !$module || !$data)
 		{
 			return false;
@@ -129,12 +131,14 @@ class XLogger
 	
 	
 	public function setM($m){
-		$test = $d[$m];
 		$this->m=$m;
 		return $this;
 	}
 	
 	public function getData($data){
+		if( isset($this->configArr[$this->m]['enable']) &&  !$this->configArr[$this->m]['enable']){
+			return false;
+		}
 		$data['addTime']=isset($data['addTime'])?$data['addTime']:date('Y-m-d H:i:s');
 		$dataSource=$this->_getDataSoure($data);
 		$obj=$this->_getObj($this->configArr[$this->m]['db'],$this->configArr[$this->m]['base']);

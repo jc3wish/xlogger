@@ -69,5 +69,6 @@ return array(
 			'key'=>'userId',
 		),
 		'format'=>'json',
+		'enable'=>true
 	),
 );

@@ -1,7 +1,7 @@
 <?php
 ini_set('display_errors','On'); 
-error_reporting(E_ALL);
-#error_reporting(E_ERROR | E_WARNING | E_PARSE);
+#error_reporting(E_ALL);
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 /**
  *  API  文件基础文件 
  *
@@ -13,7 +13,7 @@ error_reporting(E_ALL);
  /*
 	配置　API　目录
  */
-define('XLOGGER_API_PATH',dirname(dirname(__FILE__)).'/xcore_project/xlogger');
+define('XLOGGER_API_PATH',dirname(dirname(__FILE__)).'/xlogger');
 
 /**
  * 加载必须文件
@@ -27,7 +27,7 @@ $objtest = XLogger::getInstance('test');
 
 @$objtest->setM('test4');
 print_r($objtest->getSource(array('key'=>'333333333','userId'=>102)));
-@$r = $objtest->setData(array('key'=>'333333333','userId'=>102));
+$r = $objtest->setData(array('key'=>'333333333','userId'=>102));
 print_r($r);
 exit();
 exit('over');
