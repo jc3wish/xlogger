@@ -55,7 +55,7 @@ class XLogger_File
 	 */		
 	private function _getFileSource($fileName){
 		if( $this->_fileSource[$fileName] ){
-			return $_fileSource[$fileName];
+			return $this->_fileSource[$fileName];
 		}
 		$file=$this->_dir.'/'.$fileName.'.txt';
 		$this->_fileSource[$fileName] = fopen($file,'a');
